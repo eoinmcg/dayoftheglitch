@@ -155,6 +155,7 @@ class Play extends State {
       this.gameOver = true;
       this.g.audio.say('GAME! OVER!');
       this.waveMgr.robos = $.H.shuffle(this.waveMgr.robos);
+      this.waveMgr._waveCount = 0;
 
       if (this.newHi) {
         localStorage.setItem('hiScore', this.score); 

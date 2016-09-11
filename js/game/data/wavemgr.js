@@ -5,20 +5,25 @@ class WaveMgr {
     this.g = g;
     this.p = o.p;
     this.robos = $.H.shuffle (['hostage', 'hostage2', 'stompV', 'stompH', 'sprintV', 'drone', 'stampede']);
+    this._waveCount = 0;
 
 
   }
 
   nextWave() {
 
+    if (this._waveCount > this._waveCount.length - 1) {
+      this._waveCount = 0;
+    }
+
     this.wave = {
       num: 10,
       freq: 0.6,
-      groups: [this.robos[this.p.wave - 1]]
+      groups: [this.robos[this._waveCount]]
     };
-    console.log(this.wave);
 
     this.p.inWave = this.wave.num;
+    this._waveCount += 1;
 
   }
 
@@ -104,7 +109,7 @@ class WaveMgr {
     }
 
     for (let i = 0; i < 3; i ++) {
-      this.g.ents.push(new Robo(this.g, {p: this.p, i: 'stomper', x: $.H.rnd(60, this.g.w, - 80), y: -140}));
+      this.g.ents.push(new Robo(this.g, {p: this.p, i: 'stomper', x: $.H.rnd(60, this.g.w - 60), y: -140}));
     }
 
 
