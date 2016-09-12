@@ -4,7 +4,7 @@ class WaveMgr {
   constructor(g, o) {
     this.g = g;
     this.p = o.p;
-    this.robos = $.H.shuffle (['hostage', 'hostage2', 'stompV', 'stompH', 'sprintV', 'drone', 'stampede']);
+    this.robos = $.H.shuffle (['hostage', 'hostage2', 'stompV', 'stompH', 'sprintV', 'drone', 'stampede', 'dronePrisoner']);
     this._waveCount = 0;
 
 
@@ -18,7 +18,7 @@ class WaveMgr {
 
     this.wave = {
       num: 10,
-      freq: 0.6,
+      freq: 100,
       groups: [this.robos[this._waveCount]]
     };
 
@@ -98,13 +98,21 @@ class WaveMgr {
   }
 
   drone() {
-    let x = $.H.rnd(20, this.g.w - 150);
+    let x = $.H.rnd(20, this.g.w - 50);
     this.g.ents.push(new Robo(this.g, {p: this.p, i: 'drone', x: x, y: -10}));
+  }
+
+  dronePrisoner() {
+    let x = $.H.rnd(20, this.g.w - 100),
+        master = new Robo(this.g, {p: this.p, i: 'drone', x: x, y: -10});
+    this.g.ents.push(master);
+    this.g.ents.push(new Human(this.g, {p: this.p, master: master, offX: 40, offY: -40 }));
+    this.g.ents.push(new Robo(this.g, {p: this.p, i: 'drone', x: x + 80, y: -10}));
   }
 
   stampede() {
 
-    for (let i = 0; i < 10; i ++) {
+    for (let i = 0; i < 7; i ++) {
       this.g.ents.push(new Human(this.g, {p: this.p, x: $.H.rnd(40, this.g.w, - 40), y: $.H.rnd(0, 100) * -1}));
     }
 

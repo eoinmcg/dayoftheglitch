@@ -43,7 +43,9 @@ class Static {
   }
 
   reset(val = 10) {
-    this.g.audio.play('noise');
+    if (this.g.gameOver !== false) {
+      this.g.audio.play('noise');
+    }
     this.ttl = val;
   }
 

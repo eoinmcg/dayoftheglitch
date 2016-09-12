@@ -33,7 +33,7 @@ class Play extends State {
     this.sight = this.g.draw.scale(this.g.imgs.sight, 4);
     this.static = new Static(this.g, {ttl: -20 });
 
-    this.lives = 3;
+    this.lives = 2;
     this.gameOver = false;
     this.flash = 0;
 
@@ -112,12 +112,20 @@ class Play extends State {
 
     for (i = 0; i < this.splats.length; i += 1) {
       splat = this.splats[i];
-      this.g.ctx.drawImage(this.splatImgs[splat.i], splat.x, splat.y);
+      if (splat.i == 'mark') {
+        this.g.ctx.drawImage(this.splatImgs[splat.i], splat.x, splat.y);
+      }
+    }
+    for (i = 0; i < this.splats.length; i += 1) {
+      splat = this.splats[i];
+      if (splat.i == 'skull') {
+        this.g.ctx.drawImage(this.splatImgs[splat.i], splat.x, splat.y);
+      }
     }
     super.render();
 
     this.g.ctx.globalAlpha = 0.05;
-    this.g.draw.text('FLOOR', this.floor, 70, 100);
+    this.g.draw.text('ZONE', this.floor, 90, 100);
     this.g.draw.text(this.wave, this.floor, 150, 160);
     this.g.ctx.globalAlpha = 1;
 
@@ -158,12 +166,15 @@ class Play extends State {
       this.waveMgr._waveCount = 0;
 
       if (this.newHi) {
-        localStorage.setItem('hiScore', this.score); 
+        try {
+          localStorage.setItem('hiScore', this.score); 
+        } catch (e) {
+        }
       }
 
 
       this.g.addEvent({
-        time: 1,
+        time: 200,
         cb: () => {
           this.g.audio.say('HA! HA! GOOD GAME... FOR A HUMAN!');
           this.startButton = this.g.ents.push(new Button(this.g, {

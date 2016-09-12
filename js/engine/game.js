@@ -20,7 +20,7 @@ class Game {
     this.c.style.height = h + 'px';
 
 		this.dt   = 0;
-		this.fps  = 30;
+		this.fps  = 60;
 		this.frameStep = 1/ this.fps;
 		this.frameCurr = 0;
 		this.framePrev = $.H.timeStamp();

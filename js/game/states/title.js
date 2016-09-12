@@ -44,7 +44,7 @@ class Title extends State {
 
 
     this.g.addEvent( {
-      time: 2,
+      time: 200,
       cb: () => {
         this.reGlitch();
       }
@@ -85,7 +85,7 @@ class Title extends State {
 
   reGlitch() {
     this.static.reset();
-    this.g.addEvent({time: $.H.rnd(1,3) / 2, cb: () =>{ this.reGlitch(); } });
+    this.g.addEvent({time: $.H.rnd(0,2) * 100, cb: () =>{ this.reGlitch(); } });
   }
 
 

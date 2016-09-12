@@ -60,7 +60,9 @@ class Human extends Sprite {
     if (this.y > this.g.h - this.h) {
       if (!this.p.gameOver) {
         this.p.score += 5;
-        this.g.ents.push(new Text(this.g, {text: 'THANKS', col: 'w', accel: 0, x: this.x, y: this.g.h, vy: 10, vx: this.x > this.g.w/2 ? -100 : 100, scale: 2}));
+        if (!this.g.ios) {
+       this.g.ents.push(new Text(this.g, {text: 'THANKS', col: 'w', accel: 0, x: this.x, y: this.g.h, vy: 10, vx: this.x > this.g.w/2 ? -100 : 100, scale: 2})); }
+        
       }
       this.g.audio.play('jump');
       super.kill();

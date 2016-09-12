@@ -39,7 +39,7 @@ class Load {
         window.setTimeout(() => { 
           this.mkFonts() ;
           $.loadCallback(this.g);
-        }, 100);
+        }, 900);
       }
 
   }

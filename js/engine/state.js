@@ -35,7 +35,8 @@ class State {
       if (!e) {
         break;
       }
-      e.time -= ( g.dt );
+      // e.time -= ( g.dt );
+      e.time -= 1;
       if (e.time < 0) {
         e.cb.call(this);
         g.events.splice(i, 1);
