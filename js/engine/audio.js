@@ -1,9 +1,10 @@
 $.Audio = {
 
-	init: function() {
+	init: function(g) {
 
 		var aCtx = AudioContext || webkitAudioContextx;
 		this.ctx = (aCtx) ? new aCtx : false;
+    this.g = g;
 
 		if (this.ctx) {
 			this.encode();
@@ -24,7 +25,6 @@ $.Audio = {
 			for (i = 0; i < len; i++)        {
 					bytes[i] = data.charCodeAt(i);
 			}
-			// console.log(len, bytes.buffer);
 			return bytes.buffer;
 
 		};
@@ -51,6 +51,9 @@ $.Audio = {
 	},
 
   say: function(msg, rate = 1.1) {
+    if (this.g.firefox) {
+      return;
+    }
     var u = new SpeechSynthesisUtterance(msg);
     u.lang = 'en-US';
     u.rate = rate;

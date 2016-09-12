@@ -52,11 +52,11 @@ class Game {
     this.emitter = new Emitter(this);
     this.shake = new Shake(this);
 
-    if ( this.firefox || this.ios) {
+    if ( this.ios) {
       this.audio = { play: function() {}, say: function() {} };
     } else {
       this.audio = $.Audio;
-      this.audio.init();
+      this.audio.init(this);
     }
 
     this.load = new Load(this);

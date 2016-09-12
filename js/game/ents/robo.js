@@ -14,24 +14,24 @@ class Robo extends Sprite {
 
     
       case 'robo':
-        o.vy = $.H.rnd(80, 120);
+        o.vy = $.H.rnd(110, 130);
         o.vx = $.H.rnd(0,300) - 150;
       break;
 
       case 'mono':
-        o.vy = 180;
+        o.vy = 200;
         o.vx = 0;
       break;
 
       case 'drone':
-        o.vy = 250;
+        o.vy = 270;
         o.vx = 0;
         o.shadow = g.draw.scale(g.imgs.shadow, o.scale);
       break;
 
       case 'stomper':
       default:
-        o.vy = 150;
+        o.vy = 180;
         o.vx = 0;
         o.canChangeDir = false;
       break;

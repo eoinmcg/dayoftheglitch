@@ -113,11 +113,11 @@ class WaveMgr {
   stampede() {
 
     for (let i = 0; i < 7; i ++) {
-      this.g.ents.push(new Human(this.g, {p: this.p, x: $.H.rnd(40, this.g.w, - 40), y: $.H.rnd(0, 100) * -1}));
+      this.g.ents.push(new Human(this.g, {p: this.p, x: $.H.rnd(40, this.g.w, - 40), y: $.H.rnd(0, 70) * -1}));
     }
 
     for (let i = 0; i < 3; i ++) {
-      this.g.ents.push(new Robo(this.g, {p: this.p, i: 'stomper', x: $.H.rnd(60, this.g.w - 60), y: -140}));
+      this.g.ents.push(new Robo(this.g, {p: this.p, i: 'stomper', x: $.H.rnd(60, this.g.w - 60), y: -180}));
     }
 
 

@@ -166,17 +166,17 @@ class Play extends State {
       this.waveMgr._waveCount = 0;
 
       if (this.newHi) {
+        // ios in incognito mode will hang when trying to set localstorage
         try {
           localStorage.setItem('hiScore', this.score); 
-        } catch (e) {
-        }
+        } catch (e) { }
       }
 
 
       this.g.addEvent({
         time: 200,
         cb: () => {
-          this.g.audio.say('HA! HA! GOOD GAME... FOR A HUMAN!');
+          this.g.audio.say('HA! HUMANS ARE DOOMED');
           this.startButton = this.g.ents.push(new Button(this.g, {
             y: 280,
             triggerOnEnter: true,
